@@ -15,23 +15,23 @@ Getting the container up and running is very simple.
 Run the following one-liner to clone the repository and build the container:
 
 ```
-git clone https://github.com/puzzlepeaches/sneaky_gophish && \
-  cd sneaky_gophish && \
-  docker build -t sneaky_gophish .
+git clone https://github.com/vernegogh/dockerphish && \
+  cd dockerphish && \
+  docker build -t dockerphish .
 ```
 
 
 To actually run the container headlessly, run the following command:
 
 ```
-docker run -itd --name sneaky_gophish -p 3333:3333 -p 80:80 sneaky_gophish
+docker run -itd --name dockerphish -p 3333:3333 -p 80:80 dockerphish
 ```
 
 
 Thank god that GoPhish doesn't use a universal default password anymore. To get the admin credentials for the image after running it, issue the following command:
 
 ```
-docker logs sneaky_gophish | grep password
+docker logs dockerphish | grep password
 ```
 
 
