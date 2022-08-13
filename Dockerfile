@@ -31,7 +31,7 @@ RUN sed -i 's/X-Gophish-Signature/X-Signature/g' webhook/webhook.go
 RUN sed -i 's/const ServerName = "gophish"/const ServerName = "IGNORE"/' config/config.go
 
 # Changing rid value
-RUN sed -i 's/const RecipientParameter = "rid"/const RecipientParameter = "keyname"/g' models/campaign.go
+RUN sed -i 's/const RecipientParameter = "rid"/const RecipientParameter = "client_id"/g' models/campaign.go
 
 # Copying in custom 404 handler
 COPY ./files/phish.go ./controllers/phish.go
