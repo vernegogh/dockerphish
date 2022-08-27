@@ -1,5 +1,5 @@
-# sneaky_gophish
-Hiding GoPhish from the boys in blue! See my blog article linked below for details on all the changes made during compilation of GoPhish before using!
+# Docker_Phish
+Hiding GoPhish from the boys in blue! See blog article linked below for details on all the changes made during compilation of GoPhish before using!
 
 * [Never had a bad day phishing](https://www.sprocketsecurity.com/blog/never-had-a-bad-day-phishing-how-to-set-up-gophish-to-evade-security-controls)
 
@@ -28,7 +28,7 @@ docker run -itd --name dockerphish -p 3333:3333 -p 80:80 dockerphish
 ```
 
 
-Thank god that GoPhish doesn't use a universal default password anymore. To get the admin credentials for the image after running it, issue the following command:
+Thank God that GoPhish doesn't use a universal default password anymore. To get the admin credentials for the image after running it, issue the following command:
 
 ```
 docker logs dockerphish | grep password
