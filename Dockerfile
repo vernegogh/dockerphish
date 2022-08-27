@@ -12,7 +12,7 @@ RUN gulp
 
 
 # Build Golang binary
-FROM golang:1.15.2 AS build-golang
+FROM golang:latest AS build-golang
 
 RUN apt update && apt install git
 RUN mkdir -p /go/src/github.com/gophish/gophish
