@@ -45,10 +45,6 @@ FROM debian:stable-slim
 
 RUN useradd -m -d /opt/gophish -s /bin/bash app
 
-RUN set -ex \
-    && sed -i 's/"#deb http://deb.debian.org/debian bullseye main"/"deb http://deb.debian.org/debian bullseye main"/g' /etc/apt/sources.list \
-    && sed -i 's/"#deb-src http://deb.debian.org/debian bullseye main"/"deb-src http://deb.debian.org/debian bullseye main"/g' /etc/apt/sources.list 
-
 RUN apt-get update && \
 	apt-get install nano \
 	apt-get install --no-install-recommends -y jq libcap2-bin && \
