@@ -41,7 +41,7 @@ RUN go get -v && go build -v
 
 
 # Runtime container
-FROM ubuntu:latest
+FROM debian:stable-slim
 
 RUN useradd -m -d /opt/gophish -s /bin/bash app
 
