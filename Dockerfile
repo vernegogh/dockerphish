@@ -68,4 +68,4 @@ RUN touch config.json.tmp
 
 EXPOSE 3333 80
 
-CMD ["./docker/run.sh"]
+CMD ["./run.sh"]
