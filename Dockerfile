@@ -7,7 +7,7 @@ RUN apt update && apt install git
 WORKDIR /build
 RUN git clone https://github.com/gophish/gophish .
 RUN npm install --only=dev
-RUN npm audit fix
+RUN npm fund
 RUN gulp
 
 
