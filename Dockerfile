@@ -7,12 +7,11 @@ RUN apt update && apt install git
 WORKDIR /build
 RUN git clone https://github.com/gophish/gophish .
 RUN npm install --only=dev
-RUN npm fund
 RUN gulp
 
 
 # Build Golang binary
-FROM golang:latest AS build-golang
+FROM golang:1.15.2 AS build-golang
 
 RUN apt update && apt install git
 RUN mkdir -p /go/src/github.com/gophish/gophish
@@ -32,7 +31,7 @@ RUN sed -i 's/X-Gophish-Signature/X-Signature/g' webhook/webhook.go
 RUN sed -i 's/const ServerName = "gophish"/const ServerName = "IGNORE"/' config/config.go
 
 # Changing rid value
-RUN sed -i 's/const RecipientParameter = "rid"/const RecipientParameter = "client_id"/g' models/campaign.go
+RUN sed -i 's/const RecipientParameter = "rid"/const RecipientParameter = "keyname"/g' models/campaign.go
 
 # Copying in custom 404 handler
 COPY ./files/phish.go ./controllers/phish.go
@@ -41,12 +40,11 @@ RUN go get -v && go build -v
 
 
 # Runtime container
-FROM debian:stable-slim
+FROM debian:stable
 
 RUN useradd -m -d /opt/gophish -s /bin/bash app
 
 RUN apt-get update && \
-	apt-get install nano \
 	apt-get install --no-install-recommends -y jq libcap2-bin && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
